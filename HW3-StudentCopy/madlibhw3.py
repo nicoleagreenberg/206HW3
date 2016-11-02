@@ -15,9 +15,7 @@ print("START*******")
 # further revised by Colleen van Lent for Python3
 import nltk # requires some downloading/installing dependencies to use all its features; numpy is especially tricky to install
 import random
-from nltk.book import *
-
-# import nltk
+from nltk.book import text2 
 from nltk import word_tokenize,sent_tokenize
 
 debug = False #True
