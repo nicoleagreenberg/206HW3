@@ -17,17 +17,22 @@ from bs4 import BeautifulSoup
  
 base_url = "https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions"
 r = requests.get(base_url) 
-#print(r.text)
 soup = BeautifulSoup(r.text, "html.parser")
 
-for string in soup.find_all(text=re.compile("student")):
-	y = str(string) 
-	y = y.replace("student", "AWESOME STUDENT")
-	string.replaceWith(y)
-print (str(soup))
+for thing in soup.find_all(text=re.compile("student")):
+	string = str(thing) 
+	string = string.replace("student", "AMAZING student")
+	thing.replaceWith(string)
+
+# from os.path import basename, splitext
+# soup = BeautifulSoup(my_html_string)
+# for img in soup.findAll('img'):
+#     img['src'] = 'cid:' + splitext(basename(img['src']))[0]
+# my_html_string = str(soup)
 
 with open("myBSIpage.html", "wb") as file:
 	file.write(str(soup).encode())
+
 
 
 
