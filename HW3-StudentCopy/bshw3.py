@@ -25,7 +25,10 @@ for thing in soup.find_all(text=re.compile("student")):
 	thing.replaceWith(string)
 
 for img in soup.findAll('img'):
-    img['src'] = 'file:///Users/nicoleackermangreenberg/Documents/F16/SI206/206hw3/HW3-StudentCopy/media/logo.png'
+	if img['src'] == "https://testbed.files.wordpress.com/2012/09/bsi_exposition_041316_192.jpg":
+		img['src'] = 'media/206nicole.jpg'
+	else:
+		img['src'] = 'media/logo.png'
 my_html_string = str(soup)
 
 

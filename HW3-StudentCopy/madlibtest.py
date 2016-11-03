@@ -24,8 +24,6 @@ if debug:
 
 tokens = text2[0:150]
 tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-print("ORIGINAL TEXT")
-print(" ".join(tokens))
 if debug:
 	print ("First few tagged tokens are:")
 	for tup in tagged_tokens[:5]:
@@ -49,7 +47,6 @@ for (word, tag) in tagged_tokens:
 		new_word = input("Please enter %s:\n" % (tagmap[tag]))
 		final_words.append(spaced(new_word))
 
-print("MADLIB VERSION")
 print ("".join(final_words))
 
 print("\n\nEND*******")
