@@ -15,7 +15,7 @@ import webbrowser
 import requests
 from bs4 import BeautifulSoup
  
-base_url = "https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions"
+base_url = "http://collemc.people.si.umich.edu/data/bshw3StarterFile.html"
 r = requests.get(base_url) 
 soup = BeautifulSoup(r.text, "html.parser")
 
@@ -24,12 +24,12 @@ for thing in soup.find_all(text=re.compile("student")):
 	string = string.replace("student", "AMAZING student")
 	thing.replaceWith(string)
 
-# from os.path import basename, splitext
-# soup = BeautifulSoup(my_html_string)
-# for img in soup.findAll('img'):
-#     img['src'] = 'cid:' + splitext(basename(img['src']))[0]
-# my_html_string = str(soup)
+for img in soup.findAll('img'):
+    img['src'] = 'file:///Users/nicoleackermangreenberg/Documents/F16/SI206/206hw3/HW3-StudentCopy/media/logo.png'
+my_html_string = str(soup)
 
+
+#<a data-flickr-embed="true"  href="https://www.flickr.com/photos/130203562@N04/30655535391/in/dateposted-public/" title="206nicole"><img src="https://c8.staticflickr.com/6/5326/30655535391_6b2bf1c8ac_k.jpg" width="1536" height="2048" alt="206nicole"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 with open("myBSIpage.html", "wb") as file:
 	file.write(str(soup).encode())
 
