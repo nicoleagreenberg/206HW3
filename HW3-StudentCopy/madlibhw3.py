@@ -16,29 +16,22 @@ import random
 from nltk.book import text2 
 from nltk import word_tokenize,sent_tokenize
 
-debug = False #True
-
-# get file from user to make mad lib out of
-if debug:
-	print ("Getting information from file madlib_test.txt...\n")
-
-tokens = text2[0:150]
-tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-print("ORIGINAL TEXT")
-print(" ".join(tokens))
-if debug:
-	print ("First few tagged tokens are:")
-	for tup in tagged_tokens[:5]:
-		print(tup)
-
-tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "ADV": "an adverb"} #added adverb
-substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1, "ADV": .1} #set frequencies
-
 def spaced(word):
 	if word in [",", ".", "?", "!", ":"]:
 		return word
 	else:
 		return " " + word
+
+tokens = text2[0:151]
+tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
+print("ORIGINAL TEXT")
+token_list = []
+for t in tokens:
+	token_list.append(spaced(t))
+print("".join(token_list))
+
+tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "ADV": "an adverb"} #added adverb
+substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1, "ADV": .1} #set frequencies
 
 final_words = []
 
